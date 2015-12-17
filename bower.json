@@ -1,0 +1,23 @@
+{
+  "name": "glitchyCubes",
+  "homepage": "https://github.com/petkofff/glitchy-cubes",
+  "authors": [
+    "Georgi Petkoff <gpetkofff@abv.bg>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stats.js": "*",
+    "three.js": "threejs#*"
+  }
+}
