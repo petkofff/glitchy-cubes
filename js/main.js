@@ -10,6 +10,8 @@ var cubes = [];
 
 var Cube = window.Cube;
 
+var stats;
+
 function init (){
 	scene = new THREE.Scene();
 
@@ -39,18 +41,18 @@ function init (){
 	filmEffect.renderToScreen = true;
 	composer.addPass(filmEffect);
 
-	camera.position.z = 500;
+	camera.position.z = 400;
 
 	var i = 0;
-	for (;i<10000;i++){
+	for (;i<2500;i++){
 		cubes.push(new Cube(geometry, material,{
 			x: Math.random()*400-200,
 			y: Math.random()*400-200,
-			z: -Math.random()*6000,
+			z: -Math.random()*1500,
 			speed: {
 				x: 0,
 				y: 0,
-				z: Math.random()+8
+				z: Math.random()+7
 			},
 			rotationSpeed: {
 				x: (Math.random()-0.5)/7,
@@ -59,6 +61,17 @@ function init (){
 		}));
 		scene.add(cubes[i].mesh);
 	}
+	
+	stats = new Stats();
+	stats.setMode( 0 ); // 0: fps, 1: ms, 2: mb
+
+	// align top-left
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.left = '0px';
+	stats.domElement.style.top = '0px';
+
+	document.body.appendChild( stats.domElement );
+
 }
 
 init ();
@@ -82,9 +95,9 @@ function updateCubes (cubes, camera){
 			cube.set({
 				x: Math.random()*400-200,
 				y: Math.random()*400-200,
-				z: -6000 + camera.position.z + removeAfter,
+				z: -1500 + camera.position.z + removeAfter,
 				speed: {
-					z: Math.random()+8
+					z: Math.random()+7
 				},
 				rotationSpeed: {
 					x: (Math.random()-0.5)/7,
@@ -97,7 +110,9 @@ function updateCubes (cubes, camera){
 
 var render = function () {
   requestAnimationFrame(render);
-
+  
+  stats.begin();
+  
 	camera.position.x += ( mouseX - camera.position.x ) * .05;
 	camera.position.y += ( - mouseY - camera.position.y ) * .05 ;
 
@@ -105,7 +120,9 @@ var render = function () {
 	//light.position.y = camera.position.y;
 
 	updateCubes (cubes, camera);
-
+	
+	stats.end();
+	
 	composer.render();
 	//renderer.render(scene, camera);
 };
