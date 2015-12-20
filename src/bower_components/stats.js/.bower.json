@@ -25,6 +25,5 @@
   },
   "_source": "git://github.com/mrdoob/stats.js.git",
   "_target": "*",
-  "_originalSource": "stats.js",
-  "_direct": true
+  "_originalSource": "stats.js"
 }
