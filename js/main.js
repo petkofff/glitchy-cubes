@@ -16,15 +16,15 @@ function newColor (h, s, l) {
 	var color;
 	
 	if (h == null) {
-		h = 0.3;
+		h = 1;
 	}
 	
 	if (s == null) {
-		s = 0.7;
+		s = 1;
 	}
 	
 	if (l == null) {
-		l = 0.7;
+		l = 0.85;
 	}
 	
 	color = new THREE.Color();
